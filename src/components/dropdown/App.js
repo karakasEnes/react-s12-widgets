@@ -1,5 +1,4 @@
 import React from "react";
-import Search from "./Search";
 import Dropdown from "./Dropdown";
 
 const options = [

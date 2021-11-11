@@ -4,9 +4,9 @@ import axios from "axios";
 
 const Search = () => {
   const [searchVal, setSearchVal] = useState("");
-  const [result, setResult] = useState([]);
+  const [results, setResults] = useState([]);
 
-  console.log(result);
+  console.log(results);
 
   useEffect(() => {
     const search = async () => {
@@ -20,12 +20,23 @@ const Search = () => {
         },
       });
 
-      setResult(data.query.search);
+      setResults(data.query.search);
     };
 
     if (!searchVal) return;
     search();
   }, [searchVal]);
+
+  const renderResults = results.map((result) => {
+    return (
+      <div key={result.pageid} className="item">
+        <div className="content">
+          <div className="header">{result.title}</div>
+        </div>
+        {result.snippet}
+      </div>
+    );
+  });
 
   return (
     <div>
@@ -39,6 +50,8 @@ const Search = () => {
           />
         </div>
       </div>
+
+      <div className="ui celled list">{renderResults}</div>
     </div>
   );
 };

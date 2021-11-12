@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef();
+  const refTextColor = useRef();
 
   useEffect(() => {
     const onBodyClick = (event) => {
@@ -29,7 +30,10 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
 
     return (
       <div
-        onClick={() => onSelectedChange(option)}
+        onClick={() => {
+          refTextColor.current.style.color = option.value;
+          onSelectedChange(option);
+        }}
         key={option.value}
         className="item"
       >
@@ -53,6 +57,10 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
           </div>
         </div>
       </div>
+      <div
+        ref={refTextColor}
+        className="smart-color"
+      >{`This text is ${selected.value}`}</div>
     </div>
   );
 };

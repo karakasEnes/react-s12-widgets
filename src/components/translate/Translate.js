@@ -1,7 +1,7 @@
 import { useState } from "react/cjs/react.development";
 import Dropdown from "../dropdown/Dropdown";
 import Convert from "./Convert";
-const KEY = "AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM";
+
 const options = [
   {
     label: "Afrikaans",

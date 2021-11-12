@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 
 const options = [
@@ -11,15 +11,23 @@ const options = [
     label: "the color green",
     value: "green",
   },
-];
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Dropdown options={options} />
-      </div>
-    );
-  }
-}
 
-export default App;
+  {
+    label: "the color Blue",
+    value: "Blue",
+  },
+];
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+  const [selected, setSelected] = useState(options[0]);
+  return (
+    <div>
+      <Dropdown
+        selected={selected}
+        onSelectedChange={setSelected}
+        options={options}
+      />
+    </div>
+  );
+};
